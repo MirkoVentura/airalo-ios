@@ -35,7 +35,9 @@ public struct CountryListView: View {
                     } else {
                         VStack(spacing: 16) {
                             ForEach(viewModel.countries, id: \.id) { country in
-                                NavigationLink(destination: Text("Details for \(country.title)")) {
+                                NavigationLink(
+                                    destination: CountryDetailView(slug: country.slug, viewModel: viewModel)
+                                ) {
                                     CountryRowView(country: country)
                                 }
                                 .buttonStyle(.plain)

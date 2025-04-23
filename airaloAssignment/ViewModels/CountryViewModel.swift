@@ -12,6 +12,7 @@ import Foundation
 final class CountryViewModel {
     private let service: CountryService
     var countries: [Country] = []
+    var countryDetail: CountryDetail?
     var isLoading = false
     var errorMessage: String?
 
@@ -33,4 +34,20 @@ final class CountryViewModel {
 
         isLoading = false
     }
+    
+    @MainActor
+    func fetchCountryDetail(for slug: String) async {
+        countryDetail = nil
+        isLoading = true
+        errorMessage = nil
+
+        do {
+            countryDetail = try await service.fetchCountryDetail(slug)
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+
+        isLoading = false
+    }
+
 }
