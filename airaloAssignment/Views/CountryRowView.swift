@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CountryRowView: View {
     let country: Country
-    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         HStack(spacing: 12) {
             AsyncImage(url: URL(string: country.image.url)) { phase in
                 switch phase {
                 case .success(let image):
-                    image.resizable().frame(width: 37, height: 28)
+                    image.resizable()
+                        .frame(width: 37, height: 28)
                 default:
                     Color.gray.opacity(0.3)
                         .frame(width: 37, height: 28)
@@ -25,7 +25,7 @@ struct CountryRowView: View {
 
             Text(country.title)
                 .font(.ibmPlexSemiBold(size: 15))
-                .foregroundColor(colorScheme == .dark ? .white : .solidGray)
+                .foregroundColor(.solidGray)
                 .lineSpacing(20)
                
             Spacer()

@@ -36,7 +36,7 @@ struct OperatorPackageView: View {
                         .font(.ibmPlexMedium(size: 11))
                         .lineSpacing(14)
                         .kerning(1)
-                        .foregroundColor(package.operatorInfo.style == .light ? .white : .solidGray)
+                        .foregroundStyle(package.operatorInfo.style == .light ? .white : .solidGray)
 
                     Spacer()
                     Text(package.data)
@@ -56,7 +56,7 @@ struct OperatorPackageView: View {
                         .font(.ibmPlexMedium(size: 11))
                         .lineSpacing(14)
                         .kerning(1)
-                        .foregroundColor(package.operatorInfo.style == .light ? .white : .solidGray)
+                        .foregroundStyle(package.operatorInfo.style == .light ? .white : .solidGray)
 
                     Spacer()
                     Text("\(package.validity)")
@@ -79,8 +79,13 @@ struct OperatorPackageView: View {
                         .frame(maxWidth: .infinity)
                         .foregroundColor(package.operatorInfo.style == .light ? .white : .solidGray)
                         .padding()
-                        .border(Color.solidGray)
-                        .presentationCornerRadius(7)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 7)
+                                .stroke(
+                                    package.operatorInfo.style == .light ? .white : Color.solidGray,
+                                    lineWidth: 1
+                                )
+                        )
                 }
                 .frame(height: 44)
             }

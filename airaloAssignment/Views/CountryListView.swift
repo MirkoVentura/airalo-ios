@@ -14,7 +14,11 @@ public struct CountryListView: View {
 
     init(viewModel: CountryViewModel) {
         self.viewModel = viewModel
-        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "IBMPlexSans-SemiBold", size: 27)!]
+        if let uiFont = UIFont(name: "IBMPlexSans-SemiBold", size: 27) {
+            UINavigationBar.appearance().titleTextAttributes = [
+                .font : uiFont
+            ]
+        }
     }
     
     public var body: some View {
@@ -61,5 +65,4 @@ public struct CountryListView: View {
 
 #Preview {
     CountryListView(viewModel: CountryViewModel(service: .preview))
-
 }

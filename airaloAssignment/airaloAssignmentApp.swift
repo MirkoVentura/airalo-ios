@@ -11,7 +11,11 @@ import SwiftUI
 struct airaloAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            CountryListView(viewModel: .init(service: .live))
+            CountryListView(
+                viewModel: CountryViewModel(
+                    service: CommandLine.arguments.contains("-useMockService") ? .mock : .live
+                )
+            )
         }
     }
 }
