@@ -11,7 +11,7 @@ import SwiftUI
 struct airaloAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountryListView(viewModel: .init(service: .live))
         }
     }
 }

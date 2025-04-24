@@ -10,6 +10,7 @@ import SwiftUI
 
 public struct CountryListView: View {
     @State private var viewModel: CountryViewModel
+    @Environment(\.colorScheme) var colorScheme
 
     init(viewModel: CountryViewModel) {
         self.viewModel = viewModel
@@ -23,8 +24,8 @@ public struct CountryListView: View {
                     Text("Popular Countries")
                         .font(.ibmPlexSemiBold(size: 19))
                         .kerning(-0.2)
-                        .lineSpacing(32 * 89/100)
-                        .foregroundColor(Color(red: 0.29, green: 0.29, blue: 0.29))
+                        .lineSpacing(32)
+                        .foregroundColor(colorScheme == .dark ? .white : .solidGray)
                         .padding(.top, 8)
                     
                     if viewModel.isLoading {

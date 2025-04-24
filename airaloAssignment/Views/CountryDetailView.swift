@@ -37,8 +37,12 @@ struct CountryDetailView: View {
                 .navigationBackButton(color: .init(hex: "#4A4A4A"), text: "")
             }
         }
+        .background(Color(.systemGroupedBackground))
         .task {
             await viewModel.fetchCountryDetail(for: slug)
+        }
+        .onDisappear{
+            viewModel.countryDetail = nil // clean screen on disappear
         }
     }
 }

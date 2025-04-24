@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CountryRowView: View {
     let country: Country
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         HStack(spacing: 12) {
@@ -24,7 +25,7 @@ struct CountryRowView: View {
 
             Text(country.title)
                 .font(.ibmPlexSemiBold(size: 15))
-                .foregroundColor(Color(red: 0.29, green: 0.29, blue: 0.29))
+                .foregroundColor(colorScheme == .dark ? .white : .solidGray)
                 .lineSpacing(20)
                
             Spacer()

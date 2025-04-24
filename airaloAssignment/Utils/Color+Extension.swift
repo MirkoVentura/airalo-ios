@@ -22,4 +22,6 @@ extension Color {
         
         self.init(.sRGB, red: red, green: green, blue: blue, opacity: alpha)
     }
+    
+    static let solidGray = Color(.sRGB, red: 0.29, green: 0.29, blue: 0.29, opacity: 1.0)
 }
